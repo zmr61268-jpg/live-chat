@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chat Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="dashboard">
+    <header class="topbar">
+      <h1>Live Chat Dashboard</h1>
+      <a class="logout" href="{{ url_for('logout') }}">Log out</a>
+    </header>
+
+    <div class="generate-row">
+      <button id="genBtn">+ Generate New Chat Link</button>
+      <div id="linkResult"></div>
+    </div>
+
+    <div class="main-area">
+      <div class="room-list" id="roomList">
+        <p class="empty-hint">No active chats yet. Generate a link and send it to someone.</p>
+      </div>
+
+      <div class="chat-panel" id="chatPanel">
+        <p class="empty-hint">Select a chat on the left to view it.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

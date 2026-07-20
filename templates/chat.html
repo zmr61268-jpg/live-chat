@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chat</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div id="nameGate" class="login-body">
+    <form class="login-box" id="nameForm">
+      <h1>Enter your name to start</h1>
+      <input type="text" id="nameInput" placeholder="Your name" maxlength="40" autofocus required>
+      <button type="submit">Start Chat</button>
+    </form>
+  </div>
+
+  <div id="chatWrap" class="chat-wrap hidden">
+    <header class="chat-header">Chatting live</header>
+    <div id="messages" class="messages"></div>
+    <form id="messageForm" class="message-form">
+      <input type="text" id="messageInput" placeholder="Type a message..." autocomplete="off" required>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script>
+    const ROOM_ID = "{{ room_id }}";
+  </script>
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
