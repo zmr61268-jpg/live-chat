@@ -66,6 +66,18 @@ body {
 #linkResult a { color: #7ea1ff; }
 
 .main-area { display: flex; gap: 16px; height: 60vh; }
+
+@media (max-width: 700px) {
+  .dashboard { padding: 14px; }
+  .main-area { flex-direction: column; height: auto; position: relative; }
+  .room-list { width: 100%; max-height: none; height: 60vh; height: 60dvh; }
+  .chat-panel { height: 75vh; height: 75dvh; }
+  .main-area.chat-open .room-list { display: none; }
+  .main-area:not(.chat-open) .chat-panel { display: none; }
+  .back-to-list { display: inline-block !important; }
+}
+
+.back-to-list { display: none; margin-right: 10px; cursor: pointer; color: #7ea1ff; }
 .room-list {
   width: 280px;
   background: #181b22;
