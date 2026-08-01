@@ -111,6 +111,7 @@ body {
   background: transparent;
   color: white;
   outline: none;
+  font-size: 16px; /* prevents iOS Safari from auto-zooming when typing */
 }
 .message-form button {
   padding: 0 20px;
@@ -122,4 +123,10 @@ body {
 }
 .message-form button:hover { background: #3d67e6; }
 
-.chat-wrap { display: flex; flex-direction: column; height: 100vh; max-width: 600px; margin: 0 auto; }
+.chat-wrap { display: flex; flex-direction: column; height: 100vh; height: 100dvh; max-width: 600px; margin: 0 auto; }
+
+@media (max-width: 480px) {
+  .msg { max-width: 85%; font-size: 15px; }
+  .chat-header { padding: 12px 14px; }
+  .messages { padding: 12px; }
+}
