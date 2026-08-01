@@ -83,6 +83,12 @@ function openRoom(rid) {
     const input = document.getElementById('ownerMessageInput');
     const text = input.value.trim();
     if (!text) return;
+    const container = document.getElementById('ownerMessages');
+    appendMessage(container, 'owner', text); // show instantly, don't wait for the server
+    if (roomsData[currentRoom]) {
+      roomsData[currentRoom].last_message = text;
+      renderRoomList();
+    }
     socket.emit('send_message', { room_id: currentRoom, sender: 'owner', text });
     input.value = '';
   });
