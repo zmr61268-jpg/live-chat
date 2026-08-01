@@ -44,6 +44,7 @@ messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const text = messageInput.value.trim();
   if (!text) return;
+  appendMessage('visitor', text); // show instantly, don't wait for the server
   socket.emit('send_message', { room_id: ROOM_ID, sender: 'visitor', text });
   messageInput.value = '';
 });
