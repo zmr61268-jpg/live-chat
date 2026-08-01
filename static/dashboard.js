@@ -63,15 +63,20 @@ function openRoom(rid) {
   currentRoom = rid;
   renderRoomList();
   socket.emit('owner_watch_room', { room_id: rid });
+  document.querySelector('.main-area').classList.add('chat-open');
 
   chatPanelEl.innerHTML = `
-    <div class="chat-header">${(roomsData[rid] && roomsData[rid].visitor_name) || 'Visitor'}</div>
+    <div class="chat-header"><span class="back-to-list" id="backToList">&larr; Back</span>${(roomsData[rid] && roomsData[rid].visitor_name) || 'Visitor'}</div>
     <div class="messages" id="ownerMessages"></div>
     <form class="message-form" id="ownerMessageForm">
       <input type="text" id="ownerMessageInput" placeholder="Type a reply..." autocomplete="off" required>
       <button type="submit">Send</button>
     </form>
   `;
+
+  document.getElementById('backToList').addEventListener('click', () => {
+    document.querySelector('.main-area').classList.remove('chat-open');
+  });
 
   document.getElementById('ownerMessageForm').addEventListener('submit', (e) => {
     e.preventDefault();
