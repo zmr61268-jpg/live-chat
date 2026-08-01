@@ -171,7 +171,7 @@ def on_send_message(data):
     rooms[room_id]['messages'].append(msg)
     rooms[room_id]['last_activity'] = time.time()
 
-    emit('new_message', msg, to=room_id)
+    emit('new_message', msg, to=room_id, skip_sid=request.sid)
     emit('new_room_activity', {
         "room_id": room_id,
         "visitor_name": rooms[room_id]['visitor_name'],
